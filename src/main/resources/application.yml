@@ -1,0 +1,48 @@
+app:
+  datasource:
+    main:
+      driver-class-name: org.postgresql.Driver
+      jdbc-url: jdbc:postgresql://localhost:5432/postgres
+      password: 'root'
+      pool-size: 30
+      username: RMBH0V
+
+server:
+  error:
+    include-binding-errors: always
+    include-message: always
+
+
+javax:
+  persistence:
+    schema-generation:
+      create-target: metadata
+      create-source: metadata
+
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    username: RMBH0V
+    password: 'root'
+
+  flyway:
+    locations: classpath:db/migration
+    enabled: true
+    clean-on-validation-error: true
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      javax:
+        persistence:
+          schema-generation:
+            scripts:
+              create-target: ./src/main/resources/db.script/V1__InitTables.sql
+              action: create
+            create-source: metadata
+
+
+
+
+
+
